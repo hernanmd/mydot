@@ -96,7 +96,7 @@ alias ga="git add"
 alias gaa="git add -A"
 alias gc="git commit -m"
 
-## Colorize the grep command output for ease of use (good for log files)
+# Colorize the grep command output for ease of use (good for log files)
 alias grep='grep --color=auto'
 alias egrep='egrep --color=auto'
 alias fgrep='fgrep --color=auto'
@@ -116,3 +116,5 @@ alias tar='gtar'
 alias python='python3'
 alias pip='pip3'
 
+# Nano aliases
+alias nano='nano -\$cwS'
