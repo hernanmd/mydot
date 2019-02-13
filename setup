@@ -1,17 +1,21 @@
 #!/bin/bash
+#
+# mydot - Add aliases and functions to HOME shell
+#
 
 set -eo pipefail
 
 install_aliases () {
-	[[ cat .bash_aliases >> "$HOME"/.bash_aliases ]] && . $(HOME)/.bash_aliases
-	printf "Installed aliases into $HOME/.bash_aliases\n"
+	cat .bash_aliases >> "$HOME"/.bash_aliases
+	[[ -f "$HOME"/.bash_aliases ]] && source "$HOME"/.bash_aliases
+	printf "Added aliases into $HOME/.bash_aliases\n"
 }
 
 install_functions () {
-	[[ cat .bash_functions >> "$HOME"/.bash_functions ]] && . $(HOME)/.bash_functions
-	printf "Installed functions into $HOME/.bash_functions\n"
+	cat .bash_functions >> "$HOME"/.bash_functions 
+	[[ -f "$HOME"/.bash_functions ]] && source "$HOME"/.bash_functions
+	printf "Added functions into $HOME/.bash_functions\n"
 }
 
 install_aliases
 install_functions
-
