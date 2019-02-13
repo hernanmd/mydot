@@ -1,4 +1,17 @@
 #!/bin/bash
 
-[[ -f $(HOME)/.bash_aliases ]] && . $(HOME)/.bash_aliases
-[[ -f $(HOME)/.bash_functions ]] && . $(HOME)/.bash_functions
+set -eo pipefail
+
+install_aliases () {
+	[[ cat .bash_aliases >> "$HOME"/.bash_aliases ]] && . $(HOME)/.bash_aliases
+	printf "Installed aliases into $HOME/.bash_aliases\n"
+}
+
+install_functions () {
+	[[ cat .bash_functions >> "$HOME"/.bash_functions ]] && . $(HOME)/.bash_functions
+	printf "Installed functions into $HOME/.bash_functions\n"
+}
+
+install_aliases
+install_functions
+
