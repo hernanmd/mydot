@@ -115,6 +115,8 @@ alias g++='g++-6'
 alias tar='gtar'
 alias python='python3'
 alias pip='pip3'
+alias colcountt='awk -F"\t" "{print NF; exit}"'
+alias colcountc='awk -F"," "{print NF; exit}"'
 
 # Nano aliases
 alias nano='nano -\$cwS'
