@@ -30,7 +30,7 @@ main() {
 	# precedence over umasks except for filesystems mounted with option "noacl".
 	umask g-w,o-w
 
-	printf "${YELLOW}Installing hernan dotted files...${NORMAL}\n"
+	printf "${YELLOW}Installing hernan's dotted files...${NORMAL}\n"
 	type git >/dev/null 2>&1 || {
 	  printf "${RED}Error: git is not installed{$NORMAL}\n"
 	  exit 1
@@ -48,8 +48,9 @@ main() {
 		exit 1
 	}
 
-	./setup
-	source ~/.bash_aliases
+	./mydot/setup
+	source ~/mydot/.bash_aliases
+	source ~/mydot/.bash_functions
 
 	printf "${GREEN}"
 	echo 'mydot is now installed!'
