@@ -48,9 +48,9 @@ main() {
 		exit 1
 	}
 
-	./mydot/setup
-	source ~/mydot/.bash_aliases
-	source ~/mydot/.bash_functions
+	cd mydot && ./setup
+	source ~/.bash_aliases
+	source ~/.bash_functions
 
 	printf "${GREEN}"
 	echo 'mydot is now installed!'
