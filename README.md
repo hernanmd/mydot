@@ -5,8 +5,13 @@ My dotted files for bash
 # Installation
 
 ```bash
-git clone https://github.com/hernanmd/mydot.git
-cd mydot
-./setup
-source ~/.bash_aliases
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/hernanmd/mydot/master/install.sh)"
+```
+
+# Usage
+
+Just type 
+
+```bash
+alias
 ```
