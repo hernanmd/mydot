@@ -22,7 +22,7 @@ function g {
     fi
 }
 
-cpp-run() {
+cpprun() {
     echo "Compiling file..."
     g++ -o "$1" "$1.cpp"
     echo "Compiled! Enter input :D"
@@ -30,7 +30,7 @@ cpp-run() {
 }
 # cpp-run filename
 
-c-run() {
+crun() {
     echo "Compiling file..."
     gcc -o "$1" "$1.c"
     echo "Compiled! Enter input :D"
