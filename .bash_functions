@@ -55,7 +55,7 @@ fi
 unset color_prompt force_color_prompt
 
 
-github-create() {
+github_create() {
      repo_name=$1
 
      dir_name=`basename $(pwd)`
