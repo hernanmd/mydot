@@ -123,3 +123,6 @@ alias colcountc='awk -F"," "{print NF; exit}"'
 # Nano aliases
 alias nano='nano -\$cwS'
 alias cfgnano='https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh -O- | sh'
+
+# Admin
+alias usergadd='usermod -a -G'
