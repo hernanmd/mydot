@@ -27,7 +27,9 @@ alias lsd='ls -aF --color=auto -d */'
 alias tf='tailf -n 100'
 
 alias duss='du -s * | sort -g'
-alias mc='. /usr/libexec/mc/mc-wrapper.sh'
+
+# Midgnight Commander
+[[ -f '. /usr/libexec/mc/mc-wrapper.sh' ]] && { alias mc='. /usr/libexec/mc/mc-wrapper.sh'; }
 alias p='ls -1'
 alias path='echo $PATH | tr : \\n'
 alias psx='ps awwfux | less -S'
