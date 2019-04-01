@@ -95,6 +95,14 @@ alias gl="git log"
 alias ga="git add"
 alias gaa="git add -A"
 alias gc="git commit -m"
+# View all branches
+alias gitab="git branches -av"
+# Diff master
+alias gitdiffm="git diff master origin/master"
+# Git ignore file permissions
+alias gitiperms="git config core.fileMode false"
+# View Git alias
+alias gitalias="alias | grep ^g | grep git"
 
 # Colorize the grep command output for ease of use (good for log files)
 alias grep='grep --color=auto'
