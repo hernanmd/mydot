@@ -104,7 +104,28 @@ alias gitdiffm="git diff master origin/master"
 # Git ignore file permissions
 alias gitiperms="git config core.fileMode false"
 # View Git alias
-alias gitalias="alias | grep ^g | grep git"
+alias gitalias="alias | grep \'git''"
+# Remove files which have been deleted
+alias gitrmd="git rm $(git ls-files --deleted)"
+# Better log
+alias gitclog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Cblue - %cn %Creset' --abbrev-commit --date=relative"
+# Git diff last two commits
+alias gitdifl2="git diff HEAD^ HEAD"
+# Git fetch all remote branches
+alias gitbrall="git branch -r | awk -F'/' '{print "git fetch "$1,$2}' | xargs -I {} sh -c {}"
+# Git log
+alias gitglog="git log -10 --graph --date-order -C -M --pretty=format:'%C(yellow)%h%C(reset) - %C(bold green)%ad%C(reset) - %C(dim yellow)%an%C(reset) %C(bold red)>%C(reset) %C(white)%s%C(reset) %C(bold red)%d%C(reset) ' --abbrev-commit --date=short"
+# Git lines per contribution
+alias gitlpc="git ls-files | xargs -n1 git blame --line-porcelain | sed -n 's/^author //p' | sort -f | uniq -ic | sort -nr"
+alias gitl="git log --stat"
+# Show git branches by date
+alias gitbbd="for k in `git branch|sed s/^..//`;do echo -e `git log -1 --pretty=format:'%Cgreen%ci %Cblue%cr%Creset' '$k' --`\\t'$k';done|sort"
+# Show git branches sorted by last commit date
+alias gitbsbd="git for-each-ref --sort=-committerdate refs/heads/"
+
+# Show number of commits
+alias gitcc="git log --pretty=oneline | wc -l"
+
 
 # Colorize the grep command output for ease of use (good for log files)
 alias grep='grep --color=auto'
