@@ -3,7 +3,6 @@ launch_install() {
 }
 
 source_files() {
-	cd ~
 	[[ -f ~/.bash_aliases ]] || echo "Error: bash aliases not found"
 	source ~/.bash_aliases
 	[[ -f ~/.bash_aliases ]] || echo "Error: bash functions not found"
@@ -63,7 +62,7 @@ main() {
 	}
 
 	launch_install
-	# source_files
+	source_files
 
 	printf "${GREEN}"
 	echo 'mydot is now installed!'
