@@ -49,8 +49,12 @@ main() {
 	}
 
 	cd mydot && ./setup
+	[[ -f ~/.bash_aliases ]] || echo "Bash Aliases not found"
 	source ~/.bash_aliases
+	[[ -f ~/.bash_aliases ]] || echo "Bash Functions not found"
 	source ~/.bash_functions
+	[[ -f ~/.bash_aliases ]] || echo "bashrc not found"
+	source ~/.bashrc
 
 	printf "${GREEN}"
 	echo 'mydot is now installed!'
