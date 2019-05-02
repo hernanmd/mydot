@@ -104,9 +104,9 @@ alias gitdiffm="git diff master origin/master"
 # Git ignore file permissions
 alias gitiperms="git config core.fileMode false"
 # View Git alias
-alias gitalias="alias | grep \'git''"
+alias gitalias="alias | grep git"
 # Remove files which have been deleted
-alias gitrmd="git rm $(git ls-files --deleted)"
+# alias gitrmd="git rm $(git ls-files --deleted)"
 # Better log
 alias gitclog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Cblue - %cn %Creset' --abbrev-commit --date=relative"
 # Git diff last two commits
