@@ -1,3 +1,7 @@
+launch_install() {
+	(cd mydot && ./setup)
+}
+
 main() {
 	# Use colors, but only if connected to a terminal, and that terminal supports them.
 	if which tput >/dev/null 2>&1; then
@@ -48,7 +52,7 @@ main() {
 		exit 1
 	}
 
-	(cd mydot && ./setup)
+	launch_install
 	[[ -f ~/.bash_aliases ]] || echo "Bash Aliases not found"
 	source ~/.bash_aliases
 	[[ -f ~/.bash_aliases ]] || echo "Bash Functions not found"
@@ -65,4 +69,3 @@ main() {
 }
 
 main
-
