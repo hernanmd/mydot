@@ -112,7 +112,7 @@ alias gitclog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Cre
 # Git diff last two commits
 alias gitdifl2="git diff HEAD^ HEAD"
 # Git fetch all remote branches
-alias gitbrall="git branch -r | awk -F'/' '{print "git fetch "$1,$2}' | xargs -I {} sh -c {}"
+alias gitbrall="git branch -r | awk -F'/' '{print \"git fetch \"$1,$2}' | xargs -I {} sh -c {}"
 # Git log
 alias gitglog="git log -10 --graph --date-order -C -M --pretty=format:'%C(yellow)%h%C(reset) - %C(bold green)%ad%C(reset) - %C(dim yellow)%an%C(reset) %C(bold red)>%C(reset) %C(white)%s%C(reset) %C(bold red)%d%C(reset) ' --abbrev-commit --date=short"
 # Git lines per contribution
