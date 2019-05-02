@@ -1,3 +1,5 @@
+set -x
+
 launch_install() {
 	./mydot/setup
 }

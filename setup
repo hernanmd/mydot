@@ -5,6 +5,7 @@
 #
 
 set -eo pipefail
+set -x
 
 install_aliases () {
 	cp mydot/.bash_aliases ~/.bash_aliases
