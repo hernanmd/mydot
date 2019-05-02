@@ -48,7 +48,7 @@ main() {
 		exit 1
 	}
 
-	cd mydot && ./setup
+	(cd mydot && ./setup)
 	[[ -f ~/.bash_aliases ]] || echo "Bash Aliases not found"
 	source ~/.bash_aliases
 	[[ -f ~/.bash_aliases ]] || echo "Bash Functions not found"

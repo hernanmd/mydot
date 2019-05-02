@@ -119,7 +119,8 @@ alias gitglog="git log -10 --graph --date-order -C -M --pretty=format:'%C(yellow
 alias gitlpc="git ls-files | xargs -n1 git blame --line-porcelain | sed -n 's/^author //p' | sort -f | uniq -ic | sort -nr"
 alias gitl="git log --stat"
 # Show git branches by date
-alias gitbbd="for k in `git branch|sed s/^..//`;do echo -e `git log -1 --pretty=format:'%Cgreen%ci %Cblue%cr%Creset' '$k' --`\\t'$k';done|sort"
+# ToDo: Find how to escape $k in the following alias
+# alias gitbbd="for k in `git branch|sed s/^..//`;do echo -e `git log -1 --pretty=format:'%Cgreen%ci %Cblue%cr%Creset' '$k' --`\\t'$k';done|sort"
 # Show git branches sorted by last commit date
 alias gitbsbd="git for-each-ref --sort=-committerdate refs/heads/"
 
