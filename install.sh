@@ -2,6 +2,16 @@ launch_install() {
 	./mydot/setup
 }
 
+source_files() {
+	cd ~
+	[[ -f ~/.bash_aliases ]] || echo "Error: bash aliases not found"
+	source ~/.bash_aliases
+	[[ -f ~/.bash_aliases ]] || echo "Error: bash functions not found"
+	source ~/.bash_functions
+	[[ -f ~/.bash_aliases ]] || echo "bashrc not found"
+	source ~/.bashrc
+}
+
 main() {
 	# Use colors, but only if connected to a terminal, and that terminal supports them.
 	if which tput >/dev/null 2>&1; then
@@ -53,12 +63,7 @@ main() {
 	}
 
 	launch_install
-	[[ -f ~/.bash_aliases ]] || echo "Error: bash aliases not found"
-	source ~/.bash_aliases
-	[[ -f ~/.bash_aliases ]] || echo "Error: bash functions not found"
-	source ~/.bash_functions
-	[[ -f ~/.bash_aliases ]] || echo "bashrc not found"
-	source ~/.bashrc
+	source_files
 
 	printf "${GREEN}"
 	echo 'mydot is now installed!'
