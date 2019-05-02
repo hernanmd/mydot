@@ -7,13 +7,13 @@
 set -eo pipefail
 
 install_aliases () {
-	cp .bash_aliases ~/.bash_aliases
+	cp mydot/.bash_aliases ~/.bash_aliases
 	[[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 	printf "Added aliases into ~/.bash_aliases\n"
 }
 
 install_functions () {
-	cp .bash_functions ~/.bash_functions
+	cp mydot/.bash_functions ~/.bash_functions
 	[[ -f ~/.bash_functions ]] && . ~/.bash_functions
 	printf "Added functions into ~/.bash_functions\n"
 }
