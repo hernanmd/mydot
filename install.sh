@@ -1,5 +1,5 @@
 launch_install() {
-	(cd mydot && ./setup)
+	./mydot/setup
 }
 
 main() {
@@ -53,9 +53,9 @@ main() {
 	}
 
 	launch_install
-	[[ -f ~/.bash_aliases ]] || echo "Bash Aliases not found"
+	[[ -f ~/.bash_aliases ]] || echo "Error: bash aliases not found"
 	source ~/.bash_aliases
-	[[ -f ~/.bash_aliases ]] || echo "Bash Functions not found"
+	[[ -f ~/.bash_aliases ]] || echo "Error: bash functions not found"
 	source ~/.bash_functions
 	[[ -f ~/.bash_aliases ]] || echo "bashrc not found"
 	source ~/.bashrc
