@@ -62,7 +62,7 @@ main() {
 	}
 
 	launch_install
-	source_files
+	# source_files
 
 	printf "${GREEN}"
 	echo 'mydot is now installed!'
