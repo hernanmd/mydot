@@ -6,6 +6,7 @@ My dotted files for bash
 
 ```bash
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/hernanmd/mydot/master/install.sh)"
+source .bashrc
 ```
 
 # Usage
