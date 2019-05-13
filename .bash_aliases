@@ -2,6 +2,11 @@
 
 # general shortcuts
 alias c='cd '
+alias cd..='cd ..'
+alias ..="cd .."
+alias ...="cd ../.."
+alias ....="cd ../../.."
+alias .....="cd ../../../.."
 alias mkdir='mkdir -pv'
 alias mount='mount | column -t'
 alias j='jobs -l'
@@ -9,6 +14,10 @@ alias now='date +"%T"'
 alias nowtime=now
 alias nowdate='date +"%d-%m-%Y"'
 alias bashrc='nano ~/.bash_profile'
+alias less='less -FSRX'
+alias tarx="tar xzvf"
+alias tarc="tar czvf"
+alias ff='find . -type f -iname'
 
 # Confirmation
 alias mv='mv -i'
@@ -20,12 +29,7 @@ alias l='ls -al'
 alias ltr='ls -ltr'
 alias lth='l -t | head'
 alias lh='ls -Shl | less'
-alias l.='ls -d .* --color=auto'
-alias ll='ls -la --color=auto'
-alias ls='ls -hla --color=auto --group-directories-first'
-alias lsd='ls -aF --color=auto -d */'
 alias tf='tailf -n 100'
-
 alias duss='du -s * | sort -g'
 
 # Midgnight Commander
@@ -53,7 +57,7 @@ alias cycle_passenger='touch tmp/restart.txt'
 # top level folder shortcuts
 alias src='cd ~/src'
 
-alias h?="history | grep "
+alias h?="history | grep -i "
 alias h="history"
 alias h1="history 10"
 alias h2="history 20"
@@ -123,10 +127,14 @@ alias gitl="git log --stat"
 # alias gitbbd="for k in `git branch|sed s/^..//`;do echo -e `git log -1 --pretty=format:'%Cgreen%ci %Cblue%cr%Creset' '$k' --`\\t'$k';done|sort"
 # Show git branches sorted by last commit date
 alias gitbsbd="git for-each-ref --sort=-committerdate refs/heads/"
-
 # Show number of commits
 alias gitcc="git log --pretty=oneline | wc -l"
+# Open gitk UI
+alias gk="gitk --all"
 
+# List defined shell functions
+alias listfunctions="declare -f"
+alias viewfunctions="declare -F | less"
 
 # Colorize the grep command output for ease of use (good for log files)
 alias grep='grep --color=auto'
@@ -144,7 +152,6 @@ alias ports='netstat -tulanp'
 # Programming
 alias gcc='gcc-6'
 alias g++='g++-6'
-alias tar='gtar'
 alias python='python3'
 alias pip='pip3'
 alias colcountt='awk -F"\t" "{print NF; exit}"'
@@ -156,7 +163,3 @@ alias cfgnano='https://raw.githubusercontent.com/scopatz/nanorc/master/install.s
 
 # Admin
 alias usergadd='usermod -a -G'
-alias l.='ls -GFd .*'
-alias ll='ls -laGF'
-alias ls='ls -la | grep "^d" && ls -la | grep -v "^d"'
-alias lsd='ls -aF -d */'
