@@ -156,3 +156,7 @@ alias cfgnano='https://raw.githubusercontent.com/scopatz/nanorc/master/install.s
 
 # Admin
 alias usergadd='usermod -a -G'
+alias l.='ls -GFd .*'
+alias ll='ls -laGF'
+alias ls='ls -la | grep "^d" && ls -la | grep -v "^d"'
+alias lsd='ls -aF -d */'

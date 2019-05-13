@@ -1,3 +1,22 @@
+
+# Configure GNU (Linux) or BSD (macOS) specific aliases
+setupPlatformAliases () ÂÂ{
+	case "$OSTYPE" in
+	        linux*|msys*)
+			echo "Adding GNU aliases to .bash_aliases"
+Ã	                cat .aliases_GNU >> .bash_aliases
+	                ;;
+	        mac*|darwin*)
+			echo "Adding BSD aliases to .bash_aliases"
+			cat .aliases_BSD >> .bash_aliases
+	                ;;
+	        *)
+	                echo "unknown OS: $OSTYPE: Some aliases will not be available"
+	                exit 1
+	                ;;
+	esac
+}
+
 launch_install() {
 	./mydot/setup
 }
@@ -61,6 +80,7 @@ main() {
 		exit 1
 	}
 
+	setupPlatformAliases
 	launch_install
 	# source_files
 
