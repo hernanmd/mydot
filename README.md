@@ -24,8 +24,13 @@ For listing aliases related with Git
 gitalias
 ```
 
-For listing all functions
+To list all the defined functions
 ```bash
-typeset -F
+listfunctions
+```
+
+To view all the defined functions
+```bash
+viewfunctions
 ```
 
