@@ -26,6 +26,9 @@ alias ln='ln -i'
 
 # listing files
 alias l='ls -al'
+# All entries + Colorize + Use Kb/Mb/Gb + Long format
+alias ll='ls -aGhFl'
+# List most recently modified first
 alias ltr='ls -ltr'
 alias lth='l -t | head'
 alias lh='ls -Shl | less'
