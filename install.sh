@@ -1,6 +1,5 @@
-
 # Configure GNU (Linux) or BSD (macOS) specific aliases
-setupPlatformAliases () {
+setup_platform_aliases() {
 	case "$OSTYPE" in
 	        linux*|msys*)
 			echo "Adding GNU aliases to .bash_aliases"
@@ -80,7 +79,7 @@ main() {
 		exit 1
 	}
 
-	setupPlatformAliases
+	setup_platform_aliases
 	launch_install
 	# source_files
 
