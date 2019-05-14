@@ -3,11 +3,11 @@ setup_platform_aliases() {
 	case "$OSTYPE" in
 	        linux*|msys*)
 			echo "Adding GNU aliases to .bash_aliases"
-	                cat .aliases_GNU >> .bash_aliases
+	                cat mydot/.aliases_GNU >> .bash_aliases
 	                ;;
 	        mac*|darwin*)
 			echo "Adding BSD aliases to .bash_aliases"
-			cat .aliases_BSD >> .bash_aliases
+									cat mydot/.aliases_BSD >> .bash_aliases
 	                ;;
 	        *)
 	                echo "unknown OS: $OSTYPE: Some aliases will not be available"
