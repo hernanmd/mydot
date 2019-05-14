@@ -1,10 +1,10 @@
 
 # Configure GNU (Linux) or BSD (macOS) specific aliases
-setupPlatformAliases () ÂÂ{
+setupPlatformAliases () {
 	case "$OSTYPE" in
 	        linux*|msys*)
 			echo "Adding GNU aliases to .bash_aliases"
-Ã	                cat .aliases_GNU >> .bash_aliases
+	                cat .aliases_GNU >> .bash_aliases
 	                ;;
 	        mac*|darwin*)
 			echo "Adding BSD aliases to .bash_aliases"
