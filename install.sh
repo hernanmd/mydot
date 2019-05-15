@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # Configure GNU (Linux) or BSD (macOS) specific aliases
 setup_platform_aliases() {
 	case "$OSTYPE" in
