@@ -41,7 +41,6 @@ alias p='ls -1'
 alias path='echo $PATH | tr : \\n'
 alias psx='ps awwfux | less -S'
 alias vi='vim'
-alias which='alias | /usr/bin/which --tty-only --read-alias --show-dot --show-tilde'
 
 # grep for a process
 function psg {
@@ -88,12 +87,6 @@ alias gpumeminfo="grep -i --color memory /var/log/Xorg.0.log"
 
 # Grabs the disk usage in the current directory
 alias usage='du -ch | grep total'
-
-# Gets the total disk usage on your machine
-alias totalusage='df -hl --total | grep total'
-
-# Shows the individual partition usages without the temporary memory values
-alias partusage='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs'
 
 # Gives you what is using the most space. Both directories and files. Varies on current directory
 alias most='du -hsx * | sort -rh | head -10'
@@ -148,9 +141,6 @@ alias fgrep='fgrep --color=auto'
 alias ping='ping -c 5'
 # Do not wait interval 1 second, go fast #
 alias fastping='ping -c 100 -s.2'
-
-# Show open ports
-alias ports='netstat -tulanp'
 
 # Programming
 alias gcc='gcc-6'

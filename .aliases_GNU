@@ -4,3 +4,16 @@ alias l.='ls -d .* --color=auto'
 alias ll='ls -la --color=auto'
 alias ls='ls -hla --color=auto --group-directories-first'
 alias lsd='ls -aF --color=auto -d */'
+
+Â# Show open port
+alias ports='netstat -tulanp'
+
+# Get server cpu info
+alias cpuinfo="lscpu"
+
+# Gets the total disk usage on your machine
+alias totalusage='df -hl --total | grep total'
+
+# Shows the individual partition usages without the temporary memory values
+alias partusage='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs'
+
