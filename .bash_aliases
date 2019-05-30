@@ -98,7 +98,7 @@ alias ga="git add"
 alias gaa="git add -A"
 alias gc="git commit -m"
 # View all branches
-alias gitab="git branches -av"
+alias gitab="git branch -av"
 # Diff master
 alias gitdiffm="git diff master origin/master"
 # Git ignore file permissions
@@ -156,3 +156,8 @@ alias cfgnano='https://raw.githubusercontent.com/scopatz/nanorc/master/install.s
 
 # Admin
 alias usergadd='usermod -a -G'
+
+# Install latest Pharo
+alias ilpharo='wget -O- get.pharo.org | bash -'
+alias runpharo='./pharo-ui Pharo.image &'
+
