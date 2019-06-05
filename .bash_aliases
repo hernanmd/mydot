@@ -159,6 +159,9 @@ alias gcc='gcc-6'
 alias g++='g++-6'
 alias python='python3'
 alias pip='pip3'
+alias pip_apt_install='sudo apt install python3-pip'
+alias pip_upgrade='pip install --upgrade pip'
+alias pip_req_install='pip install -r requirements.txt'
 alias colcountt='awk -F"\t" "{print NF; exit}"'
 alias colcountc='awk -F"," "{print NF; exit}"'
 
@@ -172,4 +175,11 @@ alias usergadd='usermod -a -G'
 # Install latest Pharo
 alias ilpharo='wget -O- get.pharo.org | bash -'
 alias runpharo='./pharo-ui Pharo.image &'
+
+# Docker aliases
+alias de="env | grep DOCKER_"
+
+# Tmux aliases
+alias tmxpinstall="pip install --user tmuxp"
+alias tmxpload="tmuxp load .tmuxp.yaml"
 
