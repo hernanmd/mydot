@@ -10,9 +10,14 @@ alias ports='netstat -tulanp'
 
 # Get server cpu info
 alias cpuinfo="lscpu"
+# Get top process eating cpu
+alias pscpu="ps auxf | sort -nr -k 3"
+alias pscpu10="ps auxf | sort -nr -k 3 | head -10"
 
 # Gets the total disk usage on your machine
 alias totalusage='df -hl --total | grep total'
+# Grabs the disk usage in the current directory
+alias usage='du -ch | grep total'
 
 # Shows the individual partition usages without the temporary memory values
 alias partusage='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs'

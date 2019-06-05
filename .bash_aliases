@@ -85,9 +85,6 @@ alias cpuinfo="lscpu"
 # Get GPU ram on desktop / laptop
 alias gpumeminfo="grep -i --color memory /var/log/Xorg.0.log"
 
-# Grabs the disk usage in the current directory
-alias usage='du -ch | grep total'
-
 # Gives you what is using the most space. Both directories and files. Varies on current directory
 alias most='du -hsx * | sort -rh | head -10'
 
