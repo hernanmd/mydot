@@ -136,8 +136,7 @@ alias iss="hub browse issues"
 # List the URLs of at most 20 PRs based on "develop" branch:
 alias prlist="hub pr list -L 20 -b develop --format='%t [%H] | %U%n'"
 # Create a GitHub release with notes from a file and copy the URL to clipboard:
-alias gh-release-notes="hub release create -c -F release-notes.txt v2.3.0
-
+alias gh-release-notes="hub release create -c -F release-notes.txt v2.3.0"
 
 # List defined shell functions
 alias listfunctions="declare -f"
