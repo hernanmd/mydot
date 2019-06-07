@@ -107,6 +107,7 @@ alias gl="git log"
 alias ga="git add"
 alias gaa="git add -A"
 alias gc="git commit -m"
+alias gp="git push"
 # View all branches
 alias gitab="git branch -av"
 # Diff master
@@ -120,9 +121,9 @@ alias gitalias="alias | grep git"
 # Better log
 alias gitclog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Cblue - %cn %Creset' --abbrev-commit --date=relative"
 # Git diff last two commits
-alias gitdifl2="git diff HEAD^ HEAD"
+alias gitdifl2="echo 'Diff last 2 commits'; git diff HEAD^ HEAD"
 # Git fetch all remote branches
-alias gitbrall="git branch -r | awk -F'/' '{print \"git fetch \"$1,$2}' | xargs -I {} sh -c {}"
+alias gitbrall="echo 'Fetch all remote branches'; git branch -r | awk -F'/' '{print \"git fetch \"$1,$2}' | xargs -I {} sh -c {}"
 # Git log
 alias gitglog="git log -10 --graph --date-order -C -M --pretty=format:'%C(yellow)%h%C(reset) - %C(bold green)%ad%C(reset) - %C(dim yellow)%an%C(reset) %C(bold red)>%C(reset) %C(white)%s%C(reset) %C(bold red)%d%C(reset) ' --abbrev-commit --date=short"
 # Git lines per contribution
