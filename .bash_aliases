@@ -32,12 +32,14 @@ alias ll='ls -aGhFl'
 alias ltr='ls -ltr'
 alias lth='l -t | head'
 alias lh='ls -Shl | less'
+alias p='ls -1'
+
 alias tf='tailf -n 100'
 alias duss='du -s * | sort -g'
 
 # Midgnight Commander
 [[ -f '. /usr/libexec/mc/mc-wrapper.sh' ]] && { alias mc='. /usr/libexec/mc/mc-wrapper.sh'; }
-alias p='ls -1'
+
 alias path='echo $PATH | tr : \\n'
 alias psx='ps awwfux | less -S'
 alias vi='vim'
@@ -175,8 +177,18 @@ alias runpharo='./pharo-ui Pharo.image &'
 
 # Docker aliases
 alias de="env | grep DOCKER_"
+# Build image
+alias dbuild="docker build -t $1 ."
+# Run image
+alias drun="docker run -it $1 /bin/bash"
+# Remove all images
+alias drall='echo "Remove all images"; docker rmi $(docker images -qf "dangling=true")'
+alias dkar='echo "Kill containers and remove them"; docker rm $(docker kill $(docker ps -aq))'
+alias drsc='echo "Remove stopped containers"; docker container prune'
+alias dinfo='docker info'
+alias dinspect='docker inspect'
+alias drcont='echo "Start container"; docker start'
 
 # Tmux aliases
 alias tmxpinstall="pip install --user tmuxp"
 alias tmxpload="tmuxp load .tmuxp.yaml"
-

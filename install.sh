@@ -9,7 +9,7 @@ setup_platform_aliases() {
 	                ;;
 	        mac*|darwin*)
 			echo "Adding BSD aliases to .bash_aliases"
-									cat mydot/.aliases_BSD >> .bash_aliases
+			cat mydot/.aliases_BSD >> .bash_aliases
 	                ;;
 	        *)
 	                echo "unknown OS: $OSTYPE: Some aliases will not be available"
