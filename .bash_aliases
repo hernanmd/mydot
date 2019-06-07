@@ -18,6 +18,17 @@ alias less='less -FSRX'
 alias tarx="tar xzvf"
 alias tarc="tar czvf"
 alias ff='find . -type f -iname'
+alias f30min='echo "List files changed 30 min ago"; find . -cmin 30'
+alias f1Mbig='echo "List files bigger than 1 Mbyte"; find . -size +1024 -ls'
+alias f20Mbig='find . -size +20000k -exec du -h {} \;'
+alias d0b='echo "Delete empty files"; find . -type f -size 0k -exec rm {} \;'
+alias d0d='echo "Delete empty directories"; find -depth -type d -empty -exec rmdir {} \;'
+
+# Text files
+alias ftext='echo "Find text in files"; grep -ir $1 *"
+alias pline='echo "Print line number"; sed -n "$1p"'
+alias def='echo "Delete empty lines from file"; sed -i "^$/ {N; /^n$/D;}"'
+alias dlsw='echo "Delete lines starting with"; grep -v "^$1"'
 
 # Confirmation
 alias mv='mv -i'
@@ -191,3 +202,13 @@ alias drcont='echo "Start container"; docker start'
 # Tmux aliases
 alias tmxpinstall="pip install --user tmuxp"
 alias tmxpload="tmuxp load .tmuxp.yaml"
+
+# BSD specific aliases
+alias l.='ls -GFd .*'
+alias ll='ls -laGF'
+alias ls='ls -la | grep "^d" && ls -la | grep -v "^d"'
+alias lsd='ls -aF -d */'
+alias rmdir='trash'
+
+# Mount external drive on macOS
+alias med="sudo /usr/local/bin/ntfs-3g $1 /Volumes/NTFS -olocal -oallow_other"
