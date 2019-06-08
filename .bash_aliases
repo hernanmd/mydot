@@ -1,4 +1,6 @@
 # Aliases
+alias lalias='alias | less'
+alias galias='alias | grep'
 
 # general shortcuts
 alias c='cd '
@@ -103,6 +105,7 @@ alias most='du -hsx * | sort -rh | head -10'
 
 # Git commands
 alias gs="git status"
+alias gf="git fetch"
 alias gl="git log"
 alias ga="git add"
 alias gaa="git add -A"
