@@ -2,7 +2,7 @@
 alias lalias='alias | less'
 alias galias='alias | grep'
 
-# general shortcuts
+# General shortcuts
 alias c='cd '
 alias cd..='cd ..'
 alias ..="cd .."
@@ -186,8 +186,9 @@ alias cfgnano='https://raw.githubusercontent.com/scopatz/nanorc/master/install.s
 alias usergadd='usermod -a -G'
 
 # Install latest Pharo
-alias ilpharo='wget -O- get.pharo.org | bash -'
-alias runpharo='./pharo-ui Pharo.image &'
+alias ipharo='wget -O- get.pharo.org | bash -'
+alias rpharo='./pharo-ui Pharo.image &'
+alias epharo='./pharo --headless Pharo.image eval'
 
 # Docker aliases
 alias de="env | grep DOCKER_"
@@ -206,13 +207,3 @@ alias drcont='echo "Start container"; docker start'
 # Tmux aliases
 alias tmxpinstall="pip install --user tmuxp"
 alias tmxpload="tmuxp load .tmuxp.yaml"
-
-# BSD specific aliases
-alias l.='ls -GFd .*'
-alias ll='ls -laGF'
-alias ls='ls -la | grep "^d" && ls -la | grep -v "^d"'
-alias lsd='ls -aF -d */'
-alias rmdir='trash'
-
-# Mount external drive on macOS
-alias med="sudo /usr/local/bin/ntfs-3g $1 /Volumes/NTFS -olocal -oallow_other"
