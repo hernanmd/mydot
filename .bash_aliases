@@ -27,7 +27,7 @@ alias d0b='echo "Delete empty files"; find . -type f -size 0k -exec rm {} \;'
 alias d0d='echo "Delete empty directories"; find -depth -type d -empty -exec rmdir {} \;'
 
 # Text files
-alias ftext='echo "Find text in files"; grep -ir $1 *"
+alias ftext='echo "Find text in files"; grep -ir $1 *'
 alias pline='echo "Print line number"; sed -n "$1p"'
 alias def='echo "Delete empty lines from file"; sed -i "^$/ {N; /^n$/D;}"'
 alias dlsw='echo "Delete lines starting with"; grep -v "^$1"'
