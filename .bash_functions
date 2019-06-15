@@ -1,3 +1,5 @@
+#!/bin/bash
+
 # grep for a process
 function psg {
   FIRST=$(echo $1 | sed -e 's/^\(.\).*/\1/')
@@ -75,13 +77,13 @@ unset color_prompt force_color_prompt
 
 
 github_create() {
-    echo "Git: GitHub create repository
+    echo "Git: GitHub create repository"
      repo_name=$1
 
-     dir_name=`basename $(pwd)`
+     dir_name=$(basename $(pwd))
 
      if [ "$repo_name" = "" ]; then
-     echo "Repo name (hit enter to use '$dir_name')?"
+     echo "Repo name: hit enter to use '$dir_name' ?"
      read repo_name
      fi
 
