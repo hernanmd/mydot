@@ -57,13 +57,6 @@ alias path='echo $PATH | tr : \\n'
 alias psx='ps awwfux | less -S'
 alias vi='vim'
 
-# grep for a process
-function psg {
-  FIRST=$(echo $1 | sed -e 's/^\(.\).*/\1/')
-  REST=$(echo $1 | sed -e 's/^.\(.*\)/\1/')
-  ps aux | grep "[$FIRST]$REST"
-}
-
 # Debian style apache control
 alias htreload='/etc/init.d/apache2 reload'
 alias htrestart='/etc/init.d/apache2 restart'
@@ -119,10 +112,6 @@ alias gitdiffm="git diff master origin/master"
 alias gitiperms="git config core.fileMode false"
 # View Git alias
 alias gitalias="alias | grep git"
-# Remove files which have been deleted
-# alias gitrmd="git rm $(git ls-files --deleted)"
-# Better log
-alias gitclog="git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Cblue - %cn %Creset' --abbrev-commit --date=relative"
 # Git diff last two commits
 alias gitdifl2="echo 'Diff last 2 commits'; git diff HEAD^ HEAD"
 # Git fetch all remote branches
@@ -132,9 +121,6 @@ alias gitglog="git log -10 --graph --date-order -C -M --pretty=format:'%C(yellow
 # Git lines per contribution
 alias gitlpc="git ls-files | xargs -n1 git blame --line-porcelain | sed -n 's/^author //p' | sort -f | uniq -ic | sort -nr"
 alias gitl="git log --stat"
-# Show git branches by date
-# ToDo: Find how to escape $k in the following alias
-# alias gitbbd="for k in `git branch|sed s/^..//`;do echo -e `git log -1 --pretty=format:'%Cgreen%ci %Cblue%cr%Creset' '$k' --`\\t'$k';done|sort"
 # Show git branches sorted by last commit date
 alias gitbsbd="git for-each-ref --sort=-committerdate refs/heads/"
 # Show number of commits
@@ -192,10 +178,7 @@ alias epharo='./pharo --headless Pharo.image eval'
 
 # Docker aliases
 alias de="env | grep DOCKER_"
-# Build image
-alias dbuild="docker build -t $1 ."
-# Run image
-alias drun="docker run -it $1 /bin/bash"
+
 # Remove all images
 alias drall='echo "Remove all images"; docker rmi $(docker images -qf "dangling=true")'
 alias dkar='echo "Kill containers and remove them"; docker rm $(docker kill $(docker ps -aq))'

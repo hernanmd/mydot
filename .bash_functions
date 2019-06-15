@@ -1,3 +1,10 @@
+# grep for a process
+function psg {
+  FIRST=$(echo $1 | sed -e 's/^\(.\).*/\1/')
+  REST=$(echo $1 | sed -e 's/^.\(.*\)/\1/')
+  ps aux | grep "[$FIRST]$REST"
+}
+
 # print the last ten modified files in the specified directory
 function last {
     ls -lt $1 | head
@@ -12,6 +19,12 @@ function copyfile {
 function gr {
     grep -r $1 .
 }
+
+########################################
+#
+# Programming: C and C++
+#
+########################################
 
 # shortcut for compiling and running C++ programs
 function g {
@@ -37,6 +50,12 @@ crun() {
     ./"$1"
 }
 
+########################################
+#
+# Programming: Git
+#
+########################################
+
 # Add git branch if its present to PS1
 parse_git_branch() {
     git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
@@ -56,6 +75,7 @@ unset color_prompt force_color_prompt
 
 
 github_create() {
+    echo "Git: GitHub create repository
      repo_name=$1
 
      dir_name=`basename $(pwd)`
@@ -94,3 +114,39 @@ github_create() {
      git push -u origin master > /dev/null 2>&1
      echo " done."
     }
+
+# Show git branches by date
+function gitbbd () {
+    echo "Git: Show git branches by date"
+    for k in $(git branch|sed s/^..//); do 
+        echo -e `git log -1 --pretty=format:'%Cgreen%ci %Cblue%cr%Creset' '$k' --`\\t'$k'
+    done | sort
+}
+
+function gitrmd () {
+    echo "Git: Remove files which have been deleted"
+    git rm $(git ls-files --deleted)
+}
+
+# Better log
+function gitclog () {
+    git log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr)%Cblue - %cn %Creset' --abbrev-commit --date=relative
+}
+
+########################################
+#
+# DevOps: Docker
+#
+########################################
+
+# Build image
+function dbuild () {
+    echo "Docker build image"
+    docker build -t $1 .
+}
+
+# Run image
+function drun () {
+    echo "Docker run image"
+    docker run -it $1 /bin/bash
+}
