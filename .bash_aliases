@@ -95,30 +95,44 @@ alias gpumeminfo="grep -i --color memory /var/log/Xorg.0.log"
 # Gives you what is using the most space. Both directories and files. Varies on current directory
 alias most='du -hsx * | sort -rh | head -10'
 
+###################################
+#
 # Git commands
+#
+###################################
+
 alias gs="git status"
 alias gf="git fetch"
-alias gl="git log"
+# Git fetch all remote branches
+alias gitbrall="echo 'Fetch all remote branches'; git branch -r | awk -F'/' '{print \"git fetch \"$1,$2}' | xargs -I {} sh -c {}"
 alias ga="git add"
 alias gaa="git add -A"
 alias gc="git commit -m"
 alias gp="git push"
 # View all branches
 alias gitab="git branch -av"
-# Diff master
-alias gitdiffm="git diff master origin/master"
 # Git ignore file permissions
 alias gitiperms="git config core.fileMode false"
 # View Git alias
 alias gitalias="alias | grep git"
+
+
+###################################
+#
+# Git log aliases
+#
+###################################
+
+alias gl="git log"
+# Diff master
+alias gitlog="git diff origin/master"
 # Git diff last two commits
 alias gitdifl2="echo 'Diff last 2 commits'; git diff HEAD^ HEAD"
-# Git fetch all remote branches
-alias gitbrall="echo 'Fetch all remote branches'; git branch -r | awk -F'/' '{print \"git fetch \"$1,$2}' | xargs -I {} sh -c {}"
 # Git log
 alias gitglog="git log -10 --graph --date-order -C -M --pretty=format:'%C(yellow)%h%C(reset) - %C(bold green)%ad%C(reset) - %C(dim yellow)%an%C(reset) %C(bold red)>%C(reset) %C(white)%s%C(reset) %C(bold red)%d%C(reset) ' --abbrev-commit --date=short"
 # Git lines per contribution
 alias gitlpc="git ls-files | xargs -n1 git blame --line-porcelain | sed -n 's/^author //p' | sort -f | uniq -ic | sort -nr"
+
 alias gitl="git log --stat"
 # Show git branches sorted by last commit date
 alias gitbsbd="git for-each-ref --sort=-committerdate refs/heads/"
@@ -127,6 +141,11 @@ alias gitcc="git log --pretty=oneline | wc -l"
 # Open gitk UI
 alias gk="gitk --all"
 
+###################################
+#
+# Hub aliases
+#
+###################################
 # Hub commands https://github.com/github/hub
 alias hubhelp="open https://hub.github.com"
 # Hub aliases
@@ -137,6 +156,9 @@ alias iss="hub browse issues"
 alias prlist="hub pr list -L 20 -b develop --format='%t [%H] | %U%n'"
 # Create a GitHub release with notes from a file and copy the URL to clipboard:
 alias gh-release-notes="hub release create -c -F release-notes.txt v2.3.0"
+
+
+
 
 # List defined shell functions
 alias listfunctions="declare -f"
