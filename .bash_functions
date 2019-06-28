@@ -152,3 +152,14 @@ function drun () {
     echo "Docker run image"
     docker run -it $1 /bin/bash
 }
+
+######################################
+#
+# macOS
+#
+######################################
+
+# Mount external drive
+function mountNTFS () {
+	sudo ntfs-3g $1 /Volumes/NTFS -olocal -oallow_other
+}

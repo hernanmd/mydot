@@ -54,7 +54,6 @@ alias duss='du -s * | sort -g'
 [[ -f '. /usr/libexec/mc/mc-wrapper.sh' ]] && { alias mc='. /usr/libexec/mc/mc-wrapper.sh'; }
 
 alias path='echo $PATH | tr : \\n'
-alias psx='ps awwfux | less -S'
 alias vi='vim'
 
 # Debian style apache control

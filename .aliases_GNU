@@ -11,6 +11,7 @@ alias ports='netstat -tulanp'
 # Get server cpu info
 alias cpuinfo="lscpu"
 # Get top process eating cpu
+alias psx='ps awwfux | less -S'
 alias pscpu="ps auxf | sort -nr -k 3"
 alias pscpu10="ps auxf | sort -nr -k 3 | head -10"
 

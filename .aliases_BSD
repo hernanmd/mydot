@@ -5,6 +5,4 @@ alias ll='ls -laGF'
 alias ls='ls -la | grep "^d" && ls -la | grep -v "^d"'
 alias lsd='ls -aF -d */'
 alias rmdir='trash'
-
-# Mount external drive on macOS
-alias med="sudo /usr/local/bin/ntfs-3g $1 /Volumes/NTFS -olocal -oallow_other"
+alias psx='ps awwux | less -S'
