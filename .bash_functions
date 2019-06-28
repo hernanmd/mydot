@@ -161,5 +161,7 @@ function drun () {
 
 # Mount external drive
 function mountNTFS () {
+	echo "Usage example: mountNTFS /dev/disk2s1"
+	sudo umount $1
 	sudo ntfs-3g $1 /Volumes/NTFS -olocal -oallow_other
 }
