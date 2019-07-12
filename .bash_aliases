@@ -143,10 +143,37 @@ alias gk="gitk --all"
 
 ###################################
 #
-# Hub aliases
+# pacman aliases
+#
+###################################
+# https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks#Listing_packages
+alias pacsearch="pacman -Ss"
+alias pacinstall="pacman -S"
+alias pacinstallxz"pacman -U"
+
+alias pacListInstalledPkgs="pacman -Qe"
+alias pacListForeignPkgs="pacman -Qm"
+alias pacListQuery="pacman -Ql"
+alias pacListDeps="pactree"
+alias pacListDirectDeps="pacman -Qi"
+alias pacListChanges="paccheck --md5sum --quiet2"
+alias pacBrowse="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
+
+alias pacListOrphans="sudo find /etc /usr /opt /var | LC_ALL=C pacman -Qqo - 2>&1 > /dev/null | cut -d ' ' -f 5-"
+alias pacRemoveOrphans="pacman -Rns $(pacman -Qtdq)"
+
+alias pacUninst="pacman -R"
+alias pactracefile="pacman -Qo"
+alias pacwhichpkgprovides="pacman -Fy; pacman -Fs"
+alias pacAliases="alias | grep ^pac"
+
+###################################
+#
+# hub aliases
 #
 ###################################
 # Hub commands https://github.com/github/hub
+
 alias hubhelp="open https://hub.github.com"
 # Hub aliases
 alias hubalias="alias | grep hub"
@@ -211,3 +238,4 @@ alias drcont='echo "Start container"; docker start'
 # Tmux aliases
 alias tmxpinstall="pip install --user tmuxp"
 alias tmxpload="tmuxp load .tmuxp.yaml"
+
