@@ -149,7 +149,7 @@ alias gk="gitk --all"
 # https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks#Listing_packages
 alias pacsearch="pacman -Ss"
 alias pacinstall="pacman -S"
-alias pacinstallxz"pacman -U"
+alias pacinstall="pacman -U"
 
 alias pacListInstalledPkgs="pacman -Qe"
 alias pacListForeignPkgs="pacman -Qm"
