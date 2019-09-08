@@ -160,7 +160,6 @@ alias pacListChanges="paccheck --md5sum --quiet2"
 alias pacBrowse="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
 
 alias pacListOrphans="sudo find /etc /usr /opt /var | LC_ALL=C pacman -Qqo - 2>&1 > /dev/null | cut -d ' ' -f 5-"
-alias pacRemoveOrphans="pacman -Rns $(pacman -Qtdq)"
 
 alias pacUninst="pacman -R"
 alias pactracefile="pacman -Qo"

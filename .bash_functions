@@ -171,3 +171,13 @@ function mountNTFS () {
 	sudo ntfs-3g $1 $predef_mp -olocal -oallow_other
 	echo "NTFS drive re-mounted with r/w permissions in $predef_mp"
 }
+
+######################################
+#
+# Pacman
+#
+######################################
+
+function pacRemoveOrphans () {
+    pacman -Rns $(pacman -Qtdq)
+}
