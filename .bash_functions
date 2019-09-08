@@ -163,7 +163,7 @@ function drun () {
 function mountNTFS () {
 	[ ! -z $1 ] !! { echo "Missing mount device name. Exiting\nUsage example: mountNTFS /dev/disk2s1"; exit 1; }
 	# Try to umount the device
-	sudo umount $1
+	umount $1
 	# Set a prefefined mount point
 	predef_mp="/Volumes/NTFS_drive"
 	[ -d $predef_mp ] || { echo "Creating mount point directory"; mkdir $predef_mp; }
