@@ -161,14 +161,14 @@ function drun () {
 
 # Mount external drive with r/w permissions using macFUSE and ntfs-3g
 function mountNTFS () {
-	[ ! -z $1 ] !! { echo "Missing mount device name. Exiting\nUsage example: mountNTFS /dev/disk2s1"; exit 1; }
+	[ ! -z $1 ] || { echo "Missing mount device name. Exiting\nUsage example: mountNTFS /dev/disk2s1"; exit 1; }
 	# Try to umount the device
 	umount $1
 	# Set a prefefined mount point
 	predef_mp="/Volumes/NTFS_drive"
-	[ -d $predef_mp ] || { echo "Creating mount point directory"; mkdir $predef_mp; }
+	[ -d "$predef_mp" ] || { echo "Creating mount point directory"; mkdir $predef_mp; }
 	diskutil list
-	sudo ntfs-3g $1 $predef_mp -olocal -oallow_other
+	sudo ntfs-3g $1 "$predef_mp" -olocal -oallow_other
 	echo "NTFS drive re-mounted with r/w permissions in $predef_mp"
 }
 
