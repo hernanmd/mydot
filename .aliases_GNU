@@ -5,7 +5,7 @@ alias ll='ls -la --color=auto'
 alias ls='ls -hla --color=auto --group-directories-first'
 alias lsd='ls -aF --color=auto -d */'
 
-Â# Show open port
+# Show open ports
 alias ports='netstat -tulanp'
 
 # Get server cpu info
