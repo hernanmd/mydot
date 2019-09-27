@@ -115,7 +115,10 @@ alias gitab="git branch -av"
 alias gitiperms="git config core.fileMode false"
 # View Git alias
 alias gitalias="alias | grep git"
-
+# Get the original URL
+alias giturl="git remote get-url origin"
+# Get remote information
+alias gitrinfo="git remote show origin"
 
 ###################################
 #
