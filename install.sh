@@ -27,6 +27,7 @@ setup_platform_aliases() {
 			add_bsd_aliases
 	                ;;
 	        *)
+			printf "Trying OS detection through uname...\n"
 			case $(uname -s | tr '[:upper:]' '[:lower:]') in
 				linux*|msys*)
 					add_gnu_aliases
