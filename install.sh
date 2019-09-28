@@ -4,7 +4,7 @@ readonly add_ss_msg="Adding platform aliases to system specific aliases file\n"
 
 # Backup current aliases into bash_aliases.bck
 backup_aliases() {
-	[[ -f ~/.bash_aliases ]] && { printf "Backup current aliases file\n"; cp ~/.bash_aliases ~/.bash_aliases.bck; }
+	[ -f ~/.bash_aliases ] && { printf "Backup current aliases file\n"; cp ~/.bash_aliases ~/.bash_aliases.bck; }
 }
 
 add_gnu_aliases() {
