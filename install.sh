@@ -1,20 +1,32 @@
 #!/bin/bash
 
+add_gnu_aliases() {
+	echo "Adding GNU aliases to .bash_aliases"
+	cat mydot/.aliases_GNU >> .bash_aliases
+}
+
+add_bsd_aliases() {
+	echo "Adding BSD aliases to .bash_aliases"
+	cat mydot/.aliases_BSD >> .bash_aliases
+}
+
 # Configure GNU (Linux) or BSD (macOS) specific aliases
 setup_platform_aliases() {
 	case "$OSTYPE" in
 	        linux*|msys*)
-			echo "Adding GNU aliases to .bash_aliases"
-	                cat mydot/.aliases_GNU >> .bash_aliases
+			add_gnu_aliases
 	                ;;
 	        mac*|darwin*)
-			echo "Adding BSD aliases to .bash_aliases"
-			cat mydot/.aliases_BSD >> .bash_aliases
+			add_bsd_aliases
 	                ;;
 	        *)
-	                echo "unknown OS: $OSTYPE: Some aliases will not be available"
-	                exit 1
-	                ;;
+			case $(uname -s) in
+				linux*|msys*) add_gnu_aliases
+				mac*|darwin*) add_bsd_aliases
+				*) echo "unknown OS: $OSTYPE: Some aliases will not be available"
+	                	   exit 1
+			           ;;
+			;;
 	esac
 }
 
