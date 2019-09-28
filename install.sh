@@ -4,16 +4,16 @@ readonly add_ss_msg="Adding platform aliases to system specific aliases file\n"
 
 # Backup current aliases into bash_aliases.bck
 backup_aliases() {
-	[[ -f ~/.bash_aliases ]] && { printf "Backup current aliases file\n"; cp ~/.bash_aliases ~/.bash_aliases.bck }
+	[[ -f ~/.bash_aliases ]] && { printf "Backup current aliases file\n"; cp ~/.bash_aliases ~/.bash_aliases.bck; }
 }
 
 add_gnu_aliases() {
-	printf "$add_ss_msg"
+	printf "%s" "$add_ss_msg"
 	cat mydot/.aliases_GNU >> ~/.ss_aliases
 }
 
 add_bsd_aliases() {
-	printf "$add_ss_msg"
+	printf "%s" "$add_ss_msg"
 	cat mydot/.aliases_BSD >> ~/.ss_aliases
 }
 
@@ -57,7 +57,7 @@ source_files() {
 
 main() {
 	# Use colors, but only if connected to a terminal, and that terminal supports them.
-	if which tput >/dev/null 2>&1; then
+	if command -v tput >/dev/null 2>&1; then
 		ncolors=$(tput colors)
 	fi
 	if [ -t 1 ] && [ -n "$ncolors" ] && [ "$ncolors" -ge 8 ]; then
@@ -95,13 +95,13 @@ main() {
 	# The Windows (MSYS) Git is not compatible with normal use on cygwin
 	if [ "$OSTYPE" = cygwin ]; then
 		if git --version | grep msysgit > /dev/null; then
-		  echo "Error: Windows/MSYS Git is not supported on Cygwin"
-		  echo "Error: Make sure the Cygwin git package is installed and is first on the path"
+		  printf "%s Error: Windows/MSYS Git is not supported on Cygwin\n" "${RED}"
+		  printf "%s Error: Make sure the Cygwin git package is installed and is first on the path.\n %s" "${RED}" "${NORMAL}"
 		  exit 1
 		fi
 	fi
 	env git clone --depth=1 https://github.com/hernanmd/mydot.git || {
-		printf "${RED}Error: git clone of repository failed.${NORMAL}\n"
+		printf "%s Error: git clone of repository failed. %s\n" "${RED}" "${NORMAL}"
 		exit 1
 	}
 
