@@ -241,3 +241,28 @@ alias drcont='echo "Start container"; docker start'
 alias tmxpinstall="pip install --user tmuxp"
 alias tmxpload="tmuxp load .tmuxp.yaml"
 
+
+# GNU specific aliases
+alias l.='ls -d .* --color=auto'
+alias ll='ls -la --color=auto'
+alias ls='ls -hla --color=auto --group-directories-first'
+alias lsd='ls -aF --color=auto -d */'
+
+# Show open ports
+alias ports='netstat -tulanp'
+
+# Get server cpu info
+alias cpuinfo="lscpu"
+# Get top process eating cpu
+alias psx='ps awwfux | less -S'
+alias pscpu="ps auxf | sort -nr -k 3"
+alias pscpu10="ps auxf | sort -nr -k 3 | head -10"
+
+# Gets the total disk usage on your machine
+alias totalusage='df -hl --total | grep total'
+# Grabs the disk usage in the current directory
+alias usage='du -ch | grep total'
+
+# Shows the individual partition usages without the temporary memory values
+alias partusage='df -hlT --exclude-type=tmpfs --exclude-type=devtmpfs'
+

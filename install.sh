@@ -21,11 +21,16 @@ setup_platform_aliases() {
 	                ;;
 	        *)
 			case $(uname -s) in
-				linux*|msys*) add_gnu_aliases
-				mac*|darwin*) add_bsd_aliases
+				linux*|msys*)
+					add_gnu_aliases
+					;;
+				mac*|darwin*)
+					add_bsd_aliases
+					;;
 				*) echo "unknown OS: $OSTYPE: Some aliases will not be available"
 	                	   exit 1
 			           ;;
+			esac
 			;;
 	esac
 }
