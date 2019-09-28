@@ -7,7 +7,11 @@
 set -eo pipefail
 
 install_aliases () {
+	# Replace current Bash aliases with mydot's aliases
+	# Backup copy of current aliases is in .bash_aliases.bkp
 	cp mydot/.bash_aliases ~/.bash_aliases
+	# Append system specific aliases
+	cat ~/.ss_aliases >> ~/.bash_aliases
 	[[ -f ~/.bash_aliases ]] && . ~/.bash_aliases
 	printf "Added aliases into ~/.bash_aliases\n"
 }

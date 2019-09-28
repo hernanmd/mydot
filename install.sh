@@ -1,13 +1,20 @@
 #!/bin/bash
 
+readonly add_ss_msg="Adding platform aliases to system specific aliases file\n"
+
+# Backup current aliases into bash_aliases.bck
+backup_aliases() {
+	[[ -f ~/.bash_aliases ]] && { printf "Backup current aliases file\n"; cp ~/.bash_aliases ~/.bash_aliases.bck }
+}
+
 add_gnu_aliases() {
-	echo "Adding GNU aliases to .bash_aliases"
-	cat mydot/.aliases_GNU >> .bash_aliases
+	printf "$add_ss_msg"
+	cat mydot/.aliases_GNU >> ~/.ss_aliases
 }
 
 add_bsd_aliases() {
-	echo "Adding BSD aliases to .bash_aliases"
-	cat mydot/.aliases_BSD >> .bash_aliases
+	printf "$add_ss_msg"
+	cat mydot/.aliases_BSD >> ~/.ss_aliases
 }
 
 # Configure GNU (Linux) or BSD (macOS) specific aliases
@@ -98,6 +105,7 @@ main() {
 		exit 1
 	}
 
+	backup_aliases
 	setup_platform_aliases
 	launch_install
 	# source_files
