@@ -19,7 +19,7 @@ add_bsd_aliases() {
 
 # Configure GNU (Linux) or BSD (macOS) specific aliases
 setup_platform_aliases() {
-	case "$OSTYPE" in
+	case $(echo "$OSTYPE" | tr '[:upper:]' '[:lower:]') in
 	        linux*|msys*)
 			add_gnu_aliases
 	                ;;
@@ -27,7 +27,7 @@ setup_platform_aliases() {
 			add_bsd_aliases
 	                ;;
 	        *)
-			case $(uname -s) in
+			case $(uname -s | tr '[:upper:]' '[:lower:]') in
 				linux*|msys*)
 					add_gnu_aliases
 					;;
@@ -89,7 +89,7 @@ main() {
 
 	printf "${YELLOW}Installing hernan's dotted files...${NORMAL}\n"
 	type git >/dev/null 2>&1 || {
-	  printf "${RED}Error: git is not installed{$NORMAL}\n"
+	  printf "%sError: git is not installed%s\n" "{$RED}" "{$NORMAL}"
 	  exit 1
 	}
 	# The Windows (MSYS) Git is not compatible with normal use on cygwin
