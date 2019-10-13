@@ -1,5 +1,9 @@
-
+###################################
+#
 # GNU specific aliases
+#
+###################################
+
 alias l.='ls -d .* --color=auto'
 alias ll='ls -la --color=auto'
 alias ls='ls -hla --color=auto --group-directories-first'
