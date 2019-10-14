@@ -282,14 +282,15 @@ alias install_nano_syntax_hl='wget https://raw.githubusercontent.com/scopatz/nan
 #
 ###################################
 
-alias de="env | grep DOCKER_"
-alias dpsa="docker ps -aq"
-alias drall='echo "Remove all images"; docker rmi $(docker images -qf "dangling=true")'
+alias dkalias='alias | grep ^dk'
+alias dke="env | grep DOCKER_"
+alias dkpsa="docker ps -aq"
+alias dkrall='echo "Remove all images"; docker rmi $(docker images -qf "dangling=true")'
 alias dkar='echo "Kill containers and remove them"; docker rm $(docker kill $(docker ps -aq))'
-alias drsc='echo "Remove stopped containers"; docker container prune'
-alias dinfo='docker info'
-alias dinspect='docker inspect'
-alias drcont='echo "Start container"; docker start'
+alias dkrsc='echo "Remove stopped containers"; docker container prune'
+alias dkinfo='docker info'
+alias dkinspect='docker inspect'
+alias dkrcont='echo "Start container"; docker start'
 
 ###################################
 #

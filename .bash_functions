@@ -1,30 +1,36 @@
 #!/bin/bash
 
 function bakfwd () {
-    printf "From: (.bash_functions): Create backup copy of file, adding suffix of the date of the file modification (NOT today's date)\n"    
+    printf "From .bash_functions: Create backup copy of file, adding suffix of the date of the file modification (NOT today's date)\n"    
     cp $1{,.$(date -r $1 "+%y%m%d")}
 }
 
 function psg {
-    printf "From: (.bash_functions): Grep for a process\n"
+    printf "From .bash_functions: Grep for a process\n"
     FIRST=$(echo $1 | sed -e 's/^\(.\).*/\1/')
     REST=$(echo $1 | sed -e 's/^.\(.*\)/\1/')
     ps aux | grep "[$FIRST]$REST"
 }
 
 function last {
-    printf "From: (.bash_functions): Print the last ten modified files in the specified directory\n"
+    printf "From .bash_functions: Print the last ten modified files in the specified directory\n"
     ls -lt $1 | head
 }
 
 function copyfile {
-    printf "From: (.bash_functions): Copy a file to the clipboard from the command line\n"
+    printf "From .bash_functions: Copy a file to the clipboard from the command line\n"
     cat $1 | xclip -selection clipboard
 }
 
 function gr {
-    printf "From: (.bash_functions): shortcut for recursively grepping\n"    
+    printf "From .bash_functions: shortcut for recursively grepping\n"    
     grep -r $1 .
+}
+
+function mkcdir ()
+{
+    printf "From .bash_functions: mkdir & cd\n"
+    mkdir -p -- "$1" && cd -P -- "$1"
 }
 
 ########################################
@@ -82,7 +88,7 @@ unset color_prompt force_color_prompt
 
 
 github_create() {
-    printf "From: (.bash_functions): GitHub create repository\n"
+    printf "From .bash_functions: GitHub create repository\n"
     repo_name=$1
     dir_name=$(basename $(pwd))
 
@@ -123,14 +129,14 @@ github_create() {
 
 # Show git branches by date
 function gitbbd () {
-    echo "Git: Show git branches by date"
+    printf "From .bash_functions: Show git branches by date\n"
     for k in $(git branch|sed s/^..//); do 
         echo -e `git log -1 --pretty=format:'%Cgreen%ci %Cblue%cr%Creset' '$k' --`\\t'$k'
     done | sort
 }
 
 function gitrmd () {
-    echo "Git: Remove files which have been deleted"
+    printf "From .bash_functions: Remove files which have been deleted\n"
     git rm $(git ls-files --deleted)
 }
 
@@ -147,13 +153,13 @@ function gitclog () {
 
 # Build image
 function dbuild () {
-    echo "Docker build image"
+    printf "From .bash_functions: Docker build image\n"
     docker build -t $1 .
 }
 
 # Run image
 function drun () {
-    echo "Docker run image"
+    printf "From .bash_functions: Docker run image\n"
     docker run -it $1 /bin/bash
 }
 
