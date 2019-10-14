@@ -8,6 +8,7 @@ alias lalias='alias | less'
 alias galias='alias | grep'
 alias ealias='nano ~/.bash_aliases'
 alias calias='alias | wc -l'
+alias upalias='printf "Update aliases\n"; sh -c "$(curl -fsSL https://raw.githubusercontent.com/hernanmd/mydot/master/install.sh)"'
 
 ###################################
 #
