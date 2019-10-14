@@ -1,6 +1,6 @@
 # Description
 
-My dotted files for bash. Adds a lot of useful command-line shortcuts to Bash shells using aliases.
+My dotted files for bash. Adds a lot of useful command-line shortcuts to Bash shells using aliases. Many of them are already disseminated through the whole internet so you may recognize them. This is WiP.
 
 # Installation
 
@@ -12,25 +12,22 @@ source ~/.bash_functions
 
 # Usage
 
-For listing all aliases just type 
+## Meta-information about these aliases
 
 ```bash
+# How many aliases we have?
+calias
+
+# Listing all aliases
 alias
-```
 
-For listing aliases related with Git
-
-```bash
+# List Git aliases
 gitalias
-```
 
-To list all the defined functions
-```bash
+# List defined function names
 listfunctions
-```
 
-To view all the defined functions
-```bash
+# To view all the defined functions
 viewfunctions
 ```
 
