@@ -32,11 +32,12 @@ alias less='less -FSRX'
 alias tarx="tar xzvf"
 alias tarc="tar czvf"
 alias ff='find . -type f -iname'
-alias f30min='echo "List files changed 30 min ago"; find . -cmin 30'
-alias f1Mbig='echo "List files bigger than 1 Mbyte"; find . -size +1024 -ls'
+alias f30min='printf "List files changed 30 min ago\n"; find . -cmin 30'
+alias f1Mbig='printf "List files bigger than 1 Mbyte\n"; find . -size +1024 -ls'
 alias f20Mbig='find . -size +20000k -exec du -h {} \;'
-alias d0b='echo "Delete empty files"; find . -type f -size 0k -exec rm {} \;'
-alias d0d='echo "Delete empty directories"; find -depth -type d -empty -exec rmdir {} \;'
+alias ftop10var='printf "Find top 10 largest files in /var directory\n";tree -ihafF /var | tr "[]" " "| sort -k1hr|head -10'
+alias d0b='printf "Delete empty files\n"; find . -type f -size 0k -exec rm {} \;'
+alias d0d='printf "Delete empty directories\n"; find -depth -type d -empty -exec rmdir {} \;'
 alias path='echo $PATH | tr : \\n'
 alias vi='vim'
 # Confirmation
@@ -75,6 +76,7 @@ alias h="history"
 alias h1="history 10"
 alias h2="history 20"
 alias h3="history 30"
+alias top10histo="sort ~/.bash_history | uniq -c | sort -n | tail -n 10"
 
 ###################################
 #
@@ -104,6 +106,10 @@ alias usergadd='usermod -a -G'
 alias ping='ping -c 5'
 # Do not wait interval 1 second, go fast #
 alias fastping='ping -c 100 -s.2'
+alias randpass='printf "Generate a random password 14 characters long\n"; tr -c -d "a-zA-Z0-9" </dev/urandom | dd bs=14 count=1 2>/dev/null;echo'
+
+alias genhosts='printf "Generate /etc/hosts contents\n"; echo "$(ip addr show dev $(ip r | grep -oP "default.*dev \K\S*") | grep -oP "(?<=inet )[^/]*(?=/)") $(hostname -f) $(hostname -s)"'
+
 
 ###################################
 #
@@ -143,7 +149,7 @@ alias most='du -hsx * | sort -rh | head -10'
 alias htreload='/etc/init.d/apache2 reload'
 alias htrestart='/etc/init.d/apache2 restart'
 alias htstop='/etc/init.d/apache2 stop'
-
+alias apache_findroot='grep -e "^[[:blank:]]*DocumentRoot[[:blank:]]\S"'
 alias cycle_passenger='touch tmp/restart.txt'
 
 ###################################
@@ -211,13 +217,13 @@ alias pacListQuery="pacman -Ql"
 alias pacListDeps="pactree"
 alias pacListDirectDeps="pacman -Qi"
 alias pacListChanges="paccheck --md5sum --quiet2"
-alias pacBrowse="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
-
+alias pacListBySize="pacman -Qi | egrep '^(Name|Installed)' | cut -f2 -d':' | paste - - | column -t | sort -nk 2 | grep MiB"
 alias pacListOrphans="sudo find /etc /usr /opt /var | LC_ALL=C pacman -Qqo - 2>&1 > /dev/null | cut -d ' ' -f 5-"
 
+alias pacBrowse="pacman -Qq | fzf --preview 'pacman -Qil {}' --layout=reverse --bind 'enter:execute(pacman -Qil {} | less)'"
 alias pacUninst="pacman -R"
-alias pactracefile="pacman -Qo"
-alias pacwhichpkgprovides="pacman -Fy; pacman -Fs"
+alias pacTracefile="pacman -Qo"
+alias pacWhichPkgProvides="pacman -Fy; pacman -Fs"
 alias pacAliases="alias | grep ^pac"
 
 ###################################
