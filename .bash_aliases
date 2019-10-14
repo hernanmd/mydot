@@ -6,6 +6,8 @@
 
 alias lalias='alias | less'
 alias galias='alias | grep'
+alias ealias='nano ~/.bash_aliases'
+alias calias='alias | wc -l'
 
 ###################################
 #
@@ -45,6 +47,7 @@ alias ln='ln -i'
 alias listfunctions="declare -f"
 alias viewfunctions="declare -F | less"
 
+
 ###################################
 #
 # Text files aliases
@@ -82,9 +85,6 @@ alias h3="history 30"
 alias l='ls -al'
 # All entries + Colorize + Use Kb/Mb/Gb + Long format
 alias ll='ls -aGhFl'
-# List most recently modified first
-alias ltr='ls -ltr'
-alias lth='l -t | head'
 alias lh='ls -Shl | less'
 alias p='ls -1'
 
@@ -229,7 +229,7 @@ alias pacAliases="alias | grep ^pac"
 
 alias hubhelp="open https://hub.github.com"
 # Hub aliases
-alias hubalias="alias | grep hub"
+alias hubalias="alias | grep hub "
 # Browse my issues
 alias iss="hub browse issues"
 # List the URLs of at most 20 PRs based on "develop" branch:
@@ -267,6 +267,7 @@ alias src='cd ~/src'
 ###################################
 
 alias nano='nano -\$cwS'
+alias nanonano='nano ~/.nanorc'
 alias install_nano_syntax_hl='wget https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh -O- | sh'
 
 ###################################
@@ -292,3 +293,13 @@ alias drcont='echo "Start container"; docker start'
 
 alias tmxpinstall="pip install --user tmuxp"
 alias tmxpload="tmuxp load .tmuxp.yaml"
+alias etmuxconf="nano ~/.tmux.conf"
+alias vtmuxconf="bat ~/.tmux.conf"
+# Attaches tmux to the last session; creates a new session if none exists.
+alias t='tmux attach || tmux new-session'
+# Attaches tmux to a session (example: ta portal)
+alias ta='tmux attach -t'
+# Creates a new session
+alias tn='tmux new-session'
+# Lists all ongoing sessions
+alias tl='tmux list-sessions'

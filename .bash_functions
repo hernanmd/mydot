@@ -1,24 +1,29 @@
 #!/bin/bash
 
-# grep for a process
-function psg {
-  FIRST=$(echo $1 | sed -e 's/^\(.\).*/\1/')
-  REST=$(echo $1 | sed -e 's/^.\(.*\)/\1/')
-  ps aux | grep "[$FIRST]$REST"
+function bakfwd () {
+    printf "From: (.bash_functions): Create backup copy of file, adding suffix of the date of the file modification (NOT today's date)\n"    
+    cp $1{,.$(date -r $1 "+%y%m%d")}
 }
 
-# print the last ten modified files in the specified directory
+function psg {
+    printf "From: (.bash_functions): Grep for a process\n"
+    FIRST=$(echo $1 | sed -e 's/^\(.\).*/\1/')
+    REST=$(echo $1 | sed -e 's/^.\(.*\)/\1/')
+    ps aux | grep "[$FIRST]$REST"
+}
+
 function last {
+    printf "From: (.bash_functions): Print the last ten modified files in the specified directory\n"
     ls -lt $1 | head
 }
 
-# copy a file to the clipboard from the command line
 function copyfile {
+    printf "From: (.bash_functions): Copy a file to the clipboard from the command line\n"
     cat $1 | xclip -selection clipboard
 }
 
-# shortcut for recursively grepping
 function gr {
+    printf "From: (.bash_functions): shortcut for recursively grepping\n"    
     grep -r $1 .
 }
 
@@ -38,17 +43,17 @@ function g {
 }
 
 cpprun() {
-    echo "Compiling file..."
+    printf "Compiling file...\n"
     g++ -o "$1" "$1.cpp"
-    echo "Compiled! Enter input :D"
+    printf "Compiling file...\n"
     ./"$1"
 }
 # cpp-run filename
 
 crun() {
-    echo "Compiling file..."
+    printf "Compiling file...\n"
     gcc -o "$1" "$1.c"
-    echo "Compiled! Enter input :D"
+    printf "Compiling file...\n"
     ./"$1"
 }
 
@@ -77,45 +82,44 @@ unset color_prompt force_color_prompt
 
 
 github_create() {
-    echo "Git: GitHub create repository"
-     repo_name=$1
+    printf "From: (.bash_functions): GitHub create repository\n"
+    repo_name=$1
+    dir_name=$(basename $(pwd))
 
-     dir_name=$(basename $(pwd))
+    if [ "$repo_name" = "" ]; then
+        echo "Repo name: hit enter to use '$dir_name' ?"
+        read repo_name
+    fi
 
-     if [ "$repo_name" = "" ]; then
-     echo "Repo name: hit enter to use '$dir_name' ?"
-     read repo_name
-     fi
+    if [ "$repo_name" = "" ]; then
+        repo_name=$dir_name
+    fi
 
-     if [ "$repo_name" = "" ]; then
-     repo_name=$dir_name
-     fi
+    username=`git config github.user`
+    if [ "$username" = "" ]; then
+        echo "Could not find username, run 'git config --global github.user <username>'"
+        invalid_credentials=1
+    fi
 
-     username=`git config github.user`
-     if [ "$username" = "" ]; then
-     echo "Could not find username, run 'git config --global github.user <username>'"
-     invalid_credentials=1
-     fi
+    token=`git config github.token`
+    if [ "$token" = "" ]; then
+        echo "Could not find token, run 'git config --global github.token <token>'"
+        invalid_credentials=1
+    fi
 
-     token=`git config github.token`
-     if [ "$token" = "" ]; then
-     echo "Could not find token, run 'git config --global github.token <token>'"
-     invalid_credentials=1
-     fi
+    if [ "$invalid_credentials" == "1" ]; then
+        return 1
+    fi
 
-     if [ "$invalid_credentials" == "1" ]; then
-     return 1
-     fi
+    echo -n "Creating Github repository '$repo_name' ..."
+    curl -u "$username:$token" https://api.github.com/user/repos -d '{"name":"'$repo_name'"}' > /dev/null 2>&1
+    echo " done."
 
-     echo -n "Creating Github repository '$repo_name' ..."
-     curl -u "$username:$token" https://api.github.com/user/repos -d '{"name":"'$repo_name'"}' > /dev/null 2>&1
-     echo " done."
-
-     echo -n "Pushing local code to remote ..."
-     git remote add origin git@github.com:$username/$repo_name.git > /dev/null 2>&1
-     git push -u origin master > /dev/null 2>&1
-     echo " done."
-    }
+    echo -n "Pushing local code to remote ..."
+    git remote add origin git@github.com:$username/$repo_name.git > /dev/null 2>&1
+    git push -u origin master > /dev/null 2>&1
+    echo " done."
+}
 
 # Show git branches by date
 function gitbbd () {

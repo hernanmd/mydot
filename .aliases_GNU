@@ -8,6 +8,9 @@ alias l.='ls -d .* --color=auto'
 alias ll='ls -la --color=auto'
 alias ls='ls -hla --color=auto --group-directories-first'
 alias lsd='ls -aF --color=auto -d */'
+# List most recently modified first
+alias ltr='ls -ltr'
+alias lth='l -t | head'
 
 # Show open ports
 alias ports='netstat -tulanp'
