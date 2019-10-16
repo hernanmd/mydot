@@ -155,6 +155,35 @@ alias cycle_passenger='touch tmp/restart.txt'
 
 ###################################
 #
+# Non-Debian style apache control aliases
+#
+###################################
+
+alias httpdreload='/usr/sbin/apachectl -k graceful'
+alias httpdtest='/usr/sbin/apachectl -t && /usr/sbin/apachectl -t -D DUMP_VHOSTS'
+alias httpdcfgtest='apachectl configtest'
+alias httpd_findroot='apache2ctl -V | grep SERVER_CONFIG_FILE'
+
+###################################
+#
+# NGINX aliases
+#
+###################################
+
+alias nginxreload='sudo /usr/local/nginx/sbin/nginx -s reload'
+alias nginxtest='sudo /usr/local/nginx/sbin/nginx -t'
+
+###################################
+#
+# lightttpd aliases
+#
+###################################
+
+alias lightyload='/etc/init.d/lighttpd reload'
+alias lightytest='/usr/sbin/lighttpd -f /etc/lighttpd/lighttpd.conf -t'
+
+###################################
+#
 # Git commands
 #
 ###################################
