@@ -48,7 +48,8 @@ alias ln='ln -i'
 # List defined shell functions
 alias listfunctions="declare -f"
 alias viewfunctions="declare -F | less"
-
+# Midgnight Commander
+[[ -f '. /usr/libexec/mc/mc-wrapper.sh' ]] && { alias mc='. /usr/libexec/mc/mc-wrapper.sh'; }
 
 ###################################
 #
@@ -91,10 +92,6 @@ alias ll='ls -aGhFl'
 alias lh='ls -Shl | less'
 alias p='ls -1'
 
-# Midgnight Commander
-[[ -f '. /usr/libexec/mc/mc-wrapper.sh' ]] && { alias mc='. /usr/libexec/mc/mc-wrapper.sh'; }
-
-
 ###################################
 #
 # Networking aliases
@@ -108,9 +105,8 @@ alias ping='ping -c 5'
 # Do not wait interval 1 second, go fast #
 alias fastping='ping -c 100 -s.2'
 alias randpass='printf "Generate a random password 14 characters long\n"; tr -c -d "a-zA-Z0-9" </dev/urandom | dd bs=14 count=1 2>/dev/null;echo'
-
 alias genhosts='printf "Generate /etc/hosts contents\n"; echo "$(ip addr show dev $(ip r | grep -oP "default.*dev \K\S*") | grep -oP "(?<=inet )[^/]*(?=/)") $(hostname -f) $(hostname -s)"'
-
+alias upips='printf "Scan whole specific network for active online ips\n"; nmap -n -sn 192.168.1.0/24 -oG - | awk "/Up$/{print $2}"'
 
 ###################################
 #
@@ -140,6 +136,7 @@ alias gpumeminfo="grep -i --color memory /var/log/Xorg.0.log"
 alias duss='du -s * | sort -g'
 # Gives you what is using the most space. Both directories and files. Varies on current directory
 alias most='du -hsx * | sort -rh | head -10'
+alias blktrsda='printf "traces of the i/o traffic on block devices\n"; blktrace -d /dev/sda -o - | blkparse -i -'
 
 ###################################
 #
@@ -273,8 +270,6 @@ alias prlist="hub pr list -L 20 -b develop --format='%t [%H] | %U%n'"
 # Create a GitHub release with notes from a file and copy the URL to clipboard:
 alias gh-release-notes="hub release create -c -F release-notes.txt v2.3.0"
 
-
-
 ###################################
 #
 # Programming aliases
@@ -340,3 +335,19 @@ alias ta='tmux attach -t'
 alias tn='tmux new-session'
 # Lists all ongoing sessions
 alias tl='tmux list-sessions'
+
+###################################
+#
+# SSH aliases
+#
+###################################
+# Do not create ssh alias, instead use ~/.ssh/config OpenSSH SSH client configuration files.
+#Host server10
+#  Hostname 1.2.3.4
+#  IdentityFile ~/backups/.ssh/id_dsa
+#  user foobar
+#  Port 30000
+#  ForwardX11Trusted yes
+#  TCPKeepAlive yes
+
+
