@@ -6,7 +6,7 @@
 
 alias l.='ls -GFd .*'
 alias ll='ls -laGF'
-alias ls='ls -la | grep "^d" && ls -la | grep -v "^d"'
+alias ls='ls -laGh'
 alias lsd='ls -aF -d */'
 alias rmdir='trash'
 alias psx='ps awwux | less -S'
