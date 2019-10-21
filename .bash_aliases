@@ -107,6 +107,9 @@ alias fastping='ping -c 100 -s.2'
 alias randpass='printf "Generate a random password 14 characters long\n"; tr -c -d "a-zA-Z0-9" </dev/urandom | dd bs=14 count=1 2>/dev/null;echo'
 alias genhosts='printf "Generate /etc/hosts contents\n"; echo "$(ip addr show dev $(ip r | grep -oP "default.*dev \K\S*") | grep -oP "(?<=inet )[^/]*(?=/)") $(hostname -f) $(hostname -s)"'
 alias upips='printf "Scan whole specific network for active online ips\n"; nmap -n -sn 192.168.1.0/24 -oG - | awk "/Up$/{print $2}"'
+alias iptlistnat='iptables -t nat --list'
+alias iptlist='iptables -L -v'
+alias iptbackup='/sbin/iptables-save > /root/iptables-works-$(date +%F)'
 
 ###################################
 #
@@ -235,8 +238,8 @@ alias gk="gitk --all"
 ###################################
 # https://wiki.archlinux.org/index.php/Pacman/Tips_and_tricks#Listing_packages
 alias pacsearch="pacman -Ss"
-alias pacinstall="pacman -S"
-alias pacinstall="pacman -U"
+alias pacInstall="pacman -S"
+alias pacInstall="pacman -U"
 
 alias pacListInstalledPkgs="pacman -Qe"
 alias pacListForeignPkgs="pacman -Qm"
@@ -310,12 +313,16 @@ alias install_nano_syntax_hl='wget https://raw.githubusercontent.com/scopatz/nan
 alias dkalias='alias | grep ^dk'
 alias dke="env | grep DOCKER_"
 alias dkpsa="docker ps -aq"
+alias dkrmi='docker rmi'
+alias dkimgs='docker images'
 alias dkrall='echo "Remove all images"; docker rmi $(docker images -qf "dangling=true")'
 alias dkar='echo "Kill containers and remove them"; docker rm $(docker kill $(docker ps -aq))'
 alias dkrsc='echo "Remove stopped containers"; docker container prune'
 alias dkinfo='docker info'
 alias dkinspect='docker inspect'
 alias dkrcont='echo "Start container"; docker start'
+alias dksysshow='systemctl show docker'
+alias dksyslog='journalctl -u docker'
 
 ###################################
 #
