@@ -2,35 +2,62 @@
 
 function bakfwd () {
     printf "From .bash_functions: Create backup copy of file, adding suffix of the date of the file modification (NOT today's date)\n"    
-    cp $1{,.$(date -r $1 "+%y%m%d")}
+    cp "$1"{,.$(date -r "$1" "+%y%m%d")}
 }
 
 function psg {
     printf "From .bash_functions: Grep for a process\n"
-    FIRST=$(echo $1 | sed -e 's/^\(.\).*/\1/')
-    REST=$(echo $1 | sed -e 's/^.\(.*\)/\1/')
+    FIRST=$(echo "$1" | sed -e 's/^\(.\).*/\1/')
+    REST=$(echo "$1" | sed -e 's/^.\(.*\)/\1/')
     ps aux | grep "[$FIRST]$REST"
+}
+
+###################################
+#
+# Text files functions
+#
+###################################
+
+function copyfile {
+    printf "From .bash_functions: Copy a file to the clipboard from the command line\n"
+    xclip -selection clipboard < "$1"
 }
 
 function last {
     printf "From .bash_functions: Print the last ten modified files in the specified directory\n"
-    ls -lt $1 | head
+    ls -lt "$1" | head
 }
 
-function copyfile {
-    printf "From .bash_functions: Copy a file to the clipboard from the command line\n"
-    cat $1 | xclip -selection clipboard
+function ftext {
+    printf "From .bash_functions: Find text in files\n"
+    grep -ir "$1" ./*
 }
 
 function gr {
     printf "From .bash_functions: shortcut for recursively grepping\n"    
-    grep -r $1 .
+    grep -r "$1" .
 }
+
+function dlsw { 
+    printf "Delete lines starting with...\n"
+    grep -v "^$1"
+}
+
+function pline { 
+    printf "Print line number..."
+    sed -n "$1p"
+}
+
+###################################
+#
+# Navigation functions
+#
+###################################
 
 function mkcdir ()
 {
     printf "From .bash_functions: mkdir & cd\n"
-    mkdir -p -- "$1" && cd -P -- "$1"
+    mkdir -p -- "$1" && cd -P -- "$1" || exit
 }
 
 ########################################
@@ -117,21 +144,21 @@ github_create() {
         return 1
     fi
 
-    echo -n "Creating Github repository '$repo_name' ..."
+    printf "Creating Github repository '$repo_name' ..."
     curl -u "$username:$token" https://api.github.com/user/repos -d '{"name":"'$repo_name'"}' > /dev/null 2>&1
-    echo " done."
+    printf " done.\n"
 
-    echo -n "Pushing local code to remote ..."
-    git remote add origin git@github.com:$username/$repo_name.git > /dev/null 2>&1
+    printf "Pushing local code to remote ..."
+    git remote add origin git@github.com:"$username"/"$repo_name".git > /dev/null 2>&1
     git push -u origin master > /dev/null 2>&1
-    echo " done."
+    printf " done.\n"
 }
 
 # Show git branches by date
 function gitbbd () {
     printf "From .bash_functions: Show git branches by date\n"
     for k in $(git branch|sed s/^..//); do 
-        echo -e `git log -1 --pretty=format:'%Cgreen%ci %Cblue%cr%Creset' '$k' --`\\t'$k'
+        echo -e $(git log -1 --pretty=format:'%Cgreen%ci %Cblue%cr%Creset' "$k" --)\\t"$k"
     done | sort
 }
 
@@ -171,15 +198,15 @@ function drun () {
 
 # Mount external drive with r/w permissions using macFUSE and ntfs-3g
 function mountNTFS () {
-	[ ! -z $1 ] || { echo "Missing mount device name. Exiting\nUsage example: mountNTFS /dev/disk2s1"; exit 1; }
+	[ -n "$1" ] || { echo "Missing mount device name. Exiting\nUsage example: mountNTFS /dev/disk2s1"; exit 1; }
 	# Try to umount the device
-	umount $1
+	umount "$1"
 	# Set a prefefined mount point
 	predef_mp="/Volumes/NTFS_drive"
-	[ -d "$predef_mp" ] || { echo "Creating mount point directory"; mkdir $predef_mp; }
+	[ -d "$predef_mp" ] || { printf "Creating mount point directory\n"; mkdir "$predef_mp"; }
 	diskutil list
-	sudo ntfs-3g $1 "$predef_mp" -olocal -oallow_other
-	echo "NTFS drive re-mounted with r/w permissions in $predef_mp"
+	sudo ntfs-3g "$1" "$predef_mp" -olocal -oallow_other
+	printf "NTFS drive re-mounted with r/w permissions in %s" "$predef_mp"
 }
 
 ######################################

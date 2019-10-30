@@ -57,10 +57,7 @@ alias viewfunctions="declare -F | less"
 #
 ###################################
 
-alias ftext='echo "Find text in files"; grep -ir $1 *'
-alias pline='echo "Print line number"; sed -n "$1p"'
 alias def='echo "Delete empty lines from file"; sed -i "^$/ {N; /^n$/D;}"'
-alias dlsw='echo "Delete lines starting with"; grep -v "^$1"'
 alias tf='tailf -n 100'
 # Colorize the grep command output for ease of use (good for log files)
 alias grep='grep --color=auto'
