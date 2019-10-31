@@ -1,6 +1,6 @@
 #!/bin/bash
 
-readonly add_ss_msg="Adding platform aliases to system specific aliases file\n"
+readonly add_ss_msg="Adding platform aliases to system specific aliases file"
 
 # Backup current aliases into bash_aliases.bck
 backup_aliases() {
