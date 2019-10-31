@@ -8,12 +8,12 @@ backup_aliases() {
 }
 
 add_gnu_aliases() {
-	printf "%s" "$add_ss_msg"
+	printf "%s\n" "$add_ss_msg"
 	cat mydot/.aliases_GNU >> ~/.ss_aliases
 }
 
 add_bsd_aliases() {
-	printf "%s" "$add_ss_msg"
+	printf "%s\n" "$add_ss_msg"
 	cat mydot/.aliases_BSD >> ~/.ss_aliases
 }
 
@@ -21,25 +21,26 @@ add_bsd_aliases() {
 setup_platform_aliases() {
 	case $(echo "$OSTYPE" | tr '[:upper:]' '[:lower:]') in
 	        linux*|msys*)
-			add_gnu_aliases
-	                ;;
+				add_gnu_aliases
+				;;
 	        mac*|darwin*)
-			add_bsd_aliases
-	                ;;
+				add_bsd_aliases
+				;;
 	        *)
-			printf "Trying OS detection through uname...\n"
-			case $(uname -s | tr '[:upper:]' '[:lower:]') in
-				linux*|msys*)
-					add_gnu_aliases
-					;;
-				mac*|darwin*)
-					add_bsd_aliases
-					;;
-				*) echo "unknown OS: $OSTYPE: Some aliases will not be available"
-	                	   exit 1
-			           ;;
-			esac
-			;;
+				printf "Trying OS detection through uname...\n"
+				case $(uname -s | tr '[:upper:]' '[:lower:]') in
+					linux*|msys*)
+						add_gnu_aliases
+						;;
+					mac*|darwin*)
+						add_bsd_aliases
+						;;
+					*)
+						echo "unknown OS: $OSTYPE: Some aliases will not be available"
+						exit
+						;;
+				esac
+				;;
 	esac
 }
 
@@ -48,11 +49,11 @@ launch_install() {
 }
 
 source_files() {
-	[[ -f ~/.bash_aliases ]] || echo "Error: bash aliases not found"
+	[[ -f ~/.bash_aliases ]] || printf "%sError: bash aliases not found%s\n" "${RED}" "${NORMAL}"
 	source ~/.bash_aliases
-	[[ -f ~/.bash_aliases ]] || echo "Error: bash functions not found"
+	[[ -f ~/.bash_aliases ]] || printf "%sError: bash functions not found%s\n" "${RED}" "${NORMAL}"
 	source ~/.bash_functions
-	[[ -f ~/.bash_aliases ]] || echo "bashrc not found"
+	[[ -f ~/.bash_aliases ]] || printf "%sError: .bashrc not found%s\n" "${RED}" "${NORMAL}"
 	source ~/.bashrc
 }
 
