@@ -10,3 +10,12 @@ alias ls='ls -laGh'
 alias lsd='ls -aF -d */'
 alias rmdir='trash'
 alias psx='ps awwux | less -S'
+
+###################################
+#
+# brew specific aliases
+#
+###################################
+
+ibash_snippets="brew install bash-snippets"
+ubash_snippets="brew upgrade bash-snippets"
