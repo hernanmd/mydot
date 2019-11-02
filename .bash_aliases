@@ -41,6 +41,7 @@ alias d0b='printf "Delete empty files\n"; find . -type f -size 0k -exec rm {} \;
 alias d0d='printf "Delete empty directories\n"; find -depth -type d -empty -exec rmdir {} \;'
 alias path='echo $PATH | tr : \\n'
 alias vi='vim'
+alias ee="exit"
 # Confirmation
 alias mv='mv -i'
 alias rm='rm -i'
@@ -50,6 +51,14 @@ alias listfunctions="declare -f"
 alias viewfunctions="declare -F | less"
 # Midgnight Commander
 [[ -f '. /usr/libexec/mc/mc-wrapper.sh' ]] && { alias mc='. /usr/libexec/mc/mc-wrapper.sh'; }
+# Alias chmod commands
+alias 000='chmod 000'
+alias 644='chmod 644'
+alias 755='chmod 755'
+# checks window size after command execution -> prevents wrapping problems after window resize
+alias winrefresh="shopt -s checkwinsize"
+# autocorrects cd misspellings, eg. from 'cd /sur/src/linus', shell would correctly guess 'cd /usr/src/linux'
+alias cmdspell="shopt -s cdspell"
 
 ###################################
 #
@@ -76,6 +85,8 @@ alias h1="history 10"
 alias h2="history 20"
 alias h3="history 30"
 alias top10histo="sort ~/.bash_history | uniq -c | sort -n | tail -n 10"
+# Gets history, removes repeated spaces, strips serial numbers (from history), sorts, deduplicate and keep count of duplicates, sort by numeric value in reverse, and display top ten of that.
+alias rankhisto="history | tr -s ' ' | cut -f 3- -d ' ' | sort | uniq -c |sort -nr | head"
 
 ###################################
 #

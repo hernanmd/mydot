@@ -1,5 +1,11 @@
 #!/bin/bash
 
+###################################
+#
+# Misc functions
+#
+###################################
+
 function bakfwd () {
     printf "From .bash_functions: Create backup copy of file, adding suffix of the date of the file modification (NOT today's date)\n"    
     cp "$1"{,.$(date -r "$1" "+%y%m%d")}
@@ -10,6 +16,57 @@ function psg {
     FIRST=$(echo "$1" | sed -e 's/^\(.\).*/\1/')
     REST=$(echo "$1" | sed -e 's/^.\(.*\)/\1/')
     ps aux | grep "[$FIRST]$REST"
+}
+
+# From https://bbs.archlinux.org/viewtopic.php?pid=164905#p164905
+function calc() { 
+    echo "$*" | bc
+}
+
+function mktar() { 
+    tar czf "${1%%/}.tar.gz" "${1%%/}/"
+}
+
+function mkmine() { 
+    sudo chown -R ${USER} ${1:-.}
+}
+
+# sanitize - set file/directory owner and permissions to normal values (644/755)
+# Usage: sanitize <file>
+function sanitize() {
+    chmod -R u=rwX,go=rX "$@"
+    chown -R ${USER}.users "$@"
+}
+
+function psgrep() {
+    if [ ! -z $1 ] ; then
+        printf "Grepping for processes matching %s\n"  "$1"
+        ps aux | grep $1 | grep -v grep
+    else
+        printf "!! Need name to grep for\n"
+    fi
+}
+
+# From https://bbs.archlinux.org/viewtopic.php?pid=164898#p164898
+function ex () {
+    if [ -f $1 ] ; then
+        case $1 in
+            *.tar.bz2)   tar xjf $1        ;;
+            *.tar.gz)    tar xzf $1     ;;
+            *.bz2)       bunzip2 $1       ;;
+            *.rar)       rar x $1     ;;
+            *.gz)        gunzip $1     ;;
+            *.tar)       tar xf $1        ;;
+            *.tbz2)      tar xjf $1      ;;
+            *.tgz)       tar xzf $1       ;;
+            *.zip)       unzip $1     ;;
+            *.Z)         uncompress $1  ;;
+            *.7z)        7z x $1    ;;
+            *)           printf "%s cannot be extracted via extract()\n" "$1" ;;
+        esac
+    else
+        printf "%s is not a valid file\n" "$1"
+    fi
 }
 
 ###################################
@@ -38,12 +95,12 @@ function gr {
     grep -r "$1" .
 }
 
-function dlsw { 
+function dlsw {
     printf "Delete lines starting with...\n"
     grep -v "^$1"
 }
 
-function pline { 
+function pline {
     printf "Print line number..."
     sed -n "$1p"
 }
