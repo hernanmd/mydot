@@ -287,8 +287,8 @@ alias gh-release-notes="hub release create -c -F release-notes.txt v2.3.0"
 #
 ###################################
 
-alias gcc='gcc-6'
-alias g++='g++-6'
+# alias gcc='gcc-6'
+# alias g++='g++-6'
 alias python='python3'
 alias pip='pip3'
 alias pip_apt_install='sudo apt install python3-pip'

@@ -92,7 +92,7 @@ function ftext {
 
 function gr {
     printf "From .bash_functions: shortcut for recursively grepping\n"
-    grep -r "$1" .
+    grep -r * "$1" .
 }
 
 function dlsw {
