@@ -294,7 +294,9 @@ alias pip='pip3'
 alias pip_apt_install='sudo apt install python3-pip'
 alias pip_upgrade='pip install --upgrade pip'
 alias pip_req_install='pip install -r requirements.txt'
+# Column count by tabs
 alias colcountt='awk -F"\t" "{print NF; exit}"'
+# Column count by spaces
 alias colcountc='awk -F"," "{print NF; exit}"'
 alias ipharo='echo "Install latest Pharo"; wget -O- get.pharo.org | bash -'
 alias rpharo='./pharo-ui Pharo.image &'
@@ -310,6 +312,7 @@ alias src='cd ~/src'
 
 alias nano='nano -\$cwS'
 alias nanonano='nano ~/.nanorc'
+# Install nano syntax highlighters
 alias install_nano_syntax_hl='wget https://raw.githubusercontent.com/scopatz/nanorc/master/install.sh -O- | sh'
 
 ###################################
